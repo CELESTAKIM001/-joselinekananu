@@ -1,0 +1,1329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mpurung'a Joseline Kananu | Analytical Chemist</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --accent: #ec4899;
+            --bg-light: #ffffff;
+            --bg-secondary: #f8fafc;
+            --text-primary: #0f172a;
+            --text-secondary: #64748b;
+            --border: #e2e8f0;
+            --shadow: rgba(0, 0, 0, 0.1);
+        }
+
+        [data-theme="dark"] {
+            --bg-light: #0f172a;
+            --bg-secondary: #1e293b;
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --border: #334155;
+            --shadow: rgba(0, 0, 0, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        .selectable {
+            -webkit-user-select: text !important;
+            -moz-user-select: text !important;
+            -ms-user-select: text !important;
+            user-select: text !important;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--bg-light);
+            transition: background 0.3s ease, color 0.3s ease;
+            overflow-x: hidden;
+        }
+
+        nav {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            padding: 1.5rem 2rem;
+            backdrop-filter: blur(20px) saturate(180%);
+            background: rgba(255, 255, 255, 0.7);
+            border-bottom: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        [data-theme="dark"] nav {
+            background: rgba(15, 23, 42, 0.7);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .theme-toggle {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            font-size: 1.2rem;
+        }
+
+        .theme-toggle:hover {
+            transform: rotate(180deg);
+            background: var(--primary);
+        }
+
+        .hero {
+            min-height: 100vh;
+            padding: 8rem 2rem 4rem;
+            display: grid;
+            place-items: center;
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .hero-text {
+            animation: fadeInLeft 1s ease;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .badge-dot {
+            width: 8px;
+            height: 8px;
+            background: #22c55e;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        .hero-text h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--text-primary), var(--text-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
+        }
+
+        .btn-secondary {
+            padding: 1rem 2rem;
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s;
+            border: 1px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--primary);
+            background: var(--primary);
+            color: white;
+        }
+
+        .hero-visual {
+            position: relative;
+            animation: fadeInRight 1s ease;
+        }
+
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            height: 500px;
+        }
+
+        .bento-item {
+            border-radius: 24px;
+            overflow: hidden;
+            position: relative;
+            transition: transform 0.3s;
+        }
+
+        .bento-item:hover {
+            transform: scale(1.02);
+        }
+
+        .bento-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .bento-large {
+            grid-row: span 2;
+        }
+
+        .bento-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.3), rgba(236, 72, 153, 0.3));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .bento-item:hover .bento-overlay {
+            opacity: 1;
+        }
+
+        .floating-stats {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 1rem 1.5rem;
+            border-radius: 16px;
+            box-shadow: 0 8px 32px var(--shadow);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        [data-theme="dark"] .floating-stats {
+            background: rgba(30, 41, 59, 0.9);
+        }
+
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .stat-number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        section {
+            padding: 6rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-tag {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .section-description {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 2rem;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            transform: scaleX(0);
+            transition: transform 0.3s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px var(--shadow);
+        }
+
+        .skill-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .skill-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .skill-card h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tag {
+            padding: 0.4rem 1rem;
+            background: var(--bg-light);
+            border: 1px solid var(--border);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            transition: all 0.3s;
+        }
+
+        .tag:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, var(--primary), var(--accent));
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+            padding-left: 3rem;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: -0.75rem;
+            top: 0;
+            width: 1.5rem;
+            height: 1.5rem;
+            background: var(--primary);
+            border-radius: 50%;
+            border: 4px solid var(--bg-light);
+            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.2);
+        }
+
+        .timeline-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.3s;
+        }
+
+        .timeline-card:hover {
+            transform: translateX(10px);
+            box-shadow: 0 10px 30px var(--shadow);
+        }
+
+        .timeline-date {
+            display: inline-block;
+            padding: 0.3rem 1rem;
+            background: var(--primary);
+            color: white;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .timeline-card h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-subtitle {
+            color: var(--text-secondary);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .timeline-card ul {
+            margin-left: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .timeline-card li {
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px var(--shadow);
+        }
+
+        .project-image {
+            position: relative;
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .project-card:hover .project-image img {
+            transform: scale(1.1);
+        }
+
+        .project-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.8));
+            display: flex;
+            align-items: flex-end;
+            padding: 1.5rem;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .project-card:hover .project-overlay {
+            opacity: 1;
+        }
+
+        .project-tag {
+            padding: 0.3rem 0.8rem;
+            background: var(--primary);
+            color: white;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .project-content {
+            padding: 2rem;
+        }
+
+        .project-content h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        #contact {
+            background: var(--bg-secondary);
+            border-radius: 24px;
+            padding: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #contact::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.1), transparent);
+            border-radius: 50%;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-info h2 {
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-info p {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .contact-methods {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .contact-method {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.5rem;
+            background: var(--bg-light);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            transition: all 0.3s;
+        }
+
+        .contact-method:hover {
+            transform: translateX(10px);
+            border-color: var(--primary);
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .contact-details h4 {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.3rem;
+        }
+
+        .contact-details p {
+            margin: 0;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        footer {
+            background: var(--bg-secondary);
+            padding: 3rem 2rem;
+            text-align: center;
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-link {
+            width: 45px;
+            height: 45px;
+            background: var(--bg-light);
+            border: 1px solid var(--border);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .social-link:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.5;
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+            }
+
+            .bento-grid {
+                height: 400px;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                padding: 6rem 1rem 3rem;
+            }
+
+            section {
+                padding: 4rem 1rem;
+            }
+
+            .bento-grid {
+                grid-template-columns: 1fr;
+                height: 600px;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            #contact {
+                padding: 2rem;
+            }
+
+            .floating-stats {
+                position: static;
+                margin-top: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="logo selectable">Mpurung'a Joseline Kananu</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <div class="hero-badge">
+                    <span class="badge-dot"></span>
+                    Available for Opportunities
+                </div>
+                <h1 class="selectable">
+                    Analytical Chemist<br>
+                    <span class="gradient-text">Driving Innovation</span><br>
+                    Through Precision
+                </h1>
+                <p>
+                    Graduate analytical chemist with MSc degree, specializing in advanced instrumentation, 
+                    chromatography (HPLC/UPLC, GC-MS), spectroscopy, quality control, and method development. 
+                    Experienced in pharmaceutical QC, research, and data analysis with proven expertise in 
+                    GLP/GMP compliance and analytical problem-solving.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn-primary">
+                        Let's Connect →
+                    </a>
+                    <a href="#projects" class="btn-secondary">
+                        View Experience
+                    </a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="bento-grid">
+                    <div class="bento-item bento-large">
+                        <img src="LAB.jpeg" alt="Lab Work">
+                        <div class="bento-overlay">
+                            <span style="color: white; font-weight: 600;">Heavy metal analysis in tea leaves</span>
+                        </div>
+                    </div>
+                    <div class="bento-item">
+                        <img src="spect.jpeg" alt="HPLC">
+                        <div class="bento-overlay">
+                            <span style="color: white; font-weight: 600;">Atomic absorption spectrophotometer</span>
+                        </div>
+                    </div>
+                    <div class="bento-item">
+                        <img src="spect.jpeg" alt="Research">
+                        <div class="bento-overlay">
+                            <span style="color: white; font-weight: 600;">Research & Development</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="floating-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">6+</div>
+                        <div class="stat-label">Years<br>Experience</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">20+</div>
+                        <div class="stat-label">Techniques<br>Mastered</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <div class="section-header">
+            <span class="section-tag">Expertise</span>
+            <h2>Technical Proficiency</h2>
+            <p class="section-description">
+                Comprehensive analytical chemistry skills backed by hands-on laboratory and research experience
+            </p>
+        </div>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <div class="skill-icon">🔬</div>
+                <h3>Chromatography</h3>
+                <div class="skill-tags">
+                    <span class="tag">HPLC/UPLC</span>
+                    <span class="tag">GC-MS</span>
+                    <span class="tag">Ion Chromatography</span>
+                    <span class="tag">TLC</span>
+                </div>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon">📊</div>
+                <h3>Spectroscopy</h3>
+                <div class="skill-tags">
+                    <span class="tag">UV-Vis</span>
+                    <span class="tag">FTIR</span>
+                    <span class="tag">AAS</span>
+                    <span class="tag">XRF</span>
+                    <span class="tag">Fluorescence</span>
+                </div>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon">⚗️</div>
+                <h3>Wet Chemistry</h3>
+                <div class="skill-tags">
+                    <span class="tag">Titration</span>
+                    <span class="tag">Gravimetry</span>
+                    <span class="tag">Electrochemistry</span>
+                    <span class="tag">pH Analysis</span>
+                    <span class="tag">LOI Analysis</span>
+                </div>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon">💻</div>
+                <h3>Data & Software</h3>
+                <div class="skill-tags">
+                    <span class="tag">ChemStation</span>
+                    <span class="tag">OriginPro</span>
+                    <span class="tag">Excel Analytics</span>
+                    <span class="tag">Statistical Analysis</span>
+                </div>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon">✅</div>
+                <h3>Quality Control</h3>
+                <div class="skill-tags">
+                    <span class="tag">Method Validation</span>
+                    <span class="tag">GLP/GMP</span>
+                    <span class="tag">cGMP</span>
+                    <span class="tag">ALCOA Principles</span>
+                    <span class="tag">SOP Writing</span>
+                </div>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon">🧪</div>
+                <h3>Sample Preparation</h3>
+                <div class="skill-tags">
+                    <span class="tag">Extraction</span>
+                    <span class="tag">Derivatization</span>
+                    <span class="tag">Crushing & Pulverizing</span>
+                    <span class="tag">Filtration</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <div class="section-header">
+            <span class="section-tag">Journey</span>
+            <h2>Education & Professional Experience</h2>
+        </div>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-card">
+                    <span class="timeline-date">2023 - 2025</span>
+                    <h3>Master of Science in Analytical Chemistry</h3>
+                    <p class="timeline-subtitle">University of Eldoret | First Class Honours (A)</p>
+                    <p>
+                        Advanced postgraduate education focusing on cutting-edge analytical techniques, 
+                        instrumental analysis, and research methodologies. Developed expertise in complex 
+                        analytical problem-solving and method optimization.
+                    </p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-card">
+                    <span class="timeline-date">January 2024 - April 2024</span>
+                    <h3>Data Controller and Enumerator</h3>
+                    <p class="timeline-subtitle">Savannas Forever Tanzania - NGO</p>
+                    <ul>
+                        <li>Completed intensive 4-day training on research methodologies and SurveyToGo software</li>
+                        <li>Conducted 70-day field research project across Meru and Tharaka Nithi counties</li>
+                        <li>Ensured data integrity, protection protocols, and ethical research standards</li>
+                        <li>Assisted in data cleaning and quality control procedures</li>
+                        <li>Translated research instruments to Kimeru language</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-card">
+                    <span class="timeline-date">July 2022 - August 2023</span>
+                    <h3>Quality Control Analyst</h3>
+                    <p class="timeline-subtitle">Regal Pharmaceuticals Limited</p>
+                    <ul>
+                        <li>Analyzed raw materials, packaging materials, and finished products per British Pharmacopoeia specifications</li>
+                        <li>Developed and optimized HPLC analytical methods for pharmaceutical compounds</li>
+                        <li>Conducted stability studies for retained finished products</li>
+                        <li>Operated advanced instrumentation: HPLC, UV-Vis, FTIR (Bruker), Karl Fischer, dissolution equipment</li>
+                        <li>Maintained laboratory equipment and ensured GMP/GLP compliance</li>
+                        <li>Applied ALCOA principles for data integrity and documentation</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-card">
+                    <span class="timeline-date">2017 - 2022</span>
+                    <h3>Bachelor of Science in Analytical Chemistry with Computing</h3>
+                    <p class="timeline-subtitle">University of Eldoret | Second Class Honours - Upper Division</p>
+                    <p>
+                        Comprehensive education in analytical chemistry fundamentals, advanced instrumentation, 
+                        and laboratory techniques. Developed strong foundation in chemical analysis, computational 
+                        methods, and quality assurance protocols.
+                    </p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-card">
+                    <span class="timeline-date">May 2018 - July 2018</span>
+                    <h3>Analytical Chemistry Attachee</h3>
+                    <p class="timeline-subtitle">Ministry of Mining - Mines and Geological Department</p>
+                    <p><strong>Lapidary Lab:</strong></p>
+                    <ul>
+                        <li>Sample collection, batch assignment, and reference sample management</li>
+                        <li>Crushing and pulverizing rock and soil samples using specialized equipment</li>
+                        <li>Magnetic separation of materials</li>
+                        <li>Petrographic analysis using geological microscopy</li>
+                    </ul>
+                    <p><strong>Geochemistry Lab:</strong></p>
+                    <ul>
+                        <li>Sample preparation including weighing and drying protocols</li>
+                        <li>Standards preparation for various analytical techniques</li>
+                        <li>Elemental analysis using AAS (Spectra AA model)</li>
+                        <li>UV-Vis spectrophotometry for chromophore analysis</li>
+                        <li>X-ray Fluorescence Spectrophotometry (Bruker model)</li>
+                        <li>Loss-on-ignition (LOI) analysis for moisture content determination</li>
+                        <li>Titrimetric analysis of water samples</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <div class="section-header">
+            <span class="section-tag">Research</span>
+            <h2>Key Projects & Research</h2>
+            <p class="section-description">
+                Notable analytical projects demonstrating technical expertise and research capabilities
+            </p>
+        </div>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="https://images.unsplash.com/photo-1582719508461-905c673771fd?w=700" alt="HPLC Method">
+                    <div class="project-overlay">
+                        <span class="project-tag">Method Development</span>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <h3>HPLC Method Development</h3>
+                    <p>
+                        Developed and optimized HPLC analytical methods for pharmaceutical analysis at Regal 
+                        Pharmaceuticals. Focused on method validation, optimization of mobile phases, and 
+                        ensuring compliance with British Pharmacopoeia standards.
+                    </p>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="spect.jpeg" alt="Environmental">
+                    <div class="project-overlay">
+                        <span class="project-tag">Geochemical Analysis</span>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <h3>Elemental & Mineral Analysis</h3>
+                    <p>
+                        Conducted comprehensive elemental analysis of rock and soil samples using AAS, UV-Vis, 
+                        and XRF spectroscopy. Performed petrographic analysis and magnetic separation techniques 
+                        for geological sample characterization.
+                    </p>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="https://images.unsplash.com/photo-1628595351029-c2bf17511435?w=700" alt="Quality Control">
+                    <div class="project-overlay">
+                        <span class="project-tag">Quality Control</span>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <h3>Pharmaceutical QC & Stability Studies</h3>
+                    <p>
+                        Designed and executed stability testing protocols for pharmaceutical products including 
+                        accelerated and long-term studies. Analyzed raw materials, intermediates, and finished 
+                        products ensuring GMP compliance and product quality.
+                    </p>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="https://images.unsplash.com/photo-1576086213369-97a306d36557?w=700" alt="Research">
+                    <div class="project-overlay">
+                        <span class="project-tag">Food Chemistry</span>
+                    </div>
+                </div>
+                <div class="project-content">
+                    <h3>Sugar Content Analysis in Juices</h3>
+                    <p>
+                        Graduate research project conducting comparative analysis of sugar content in artificial 
+                        and fresh homemade juices. Employed various analytical techniques to quantify and compare 
+                        sugar levels across different juice formulations.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div id="contact">
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <span class="section-tag">Get in Touch</span>
+                    <h2>Let's Connect</h2>
+                    <p>
+                        I'm actively seeking opportunities in analytical chemistry, quality control, 
+                        research positions, or pharmaceutical analysis. Let's discuss how I can contribute 
+                        to your team with my expertise in chromatography, spectroscopy, and QC systems.
+                    </p>
+                    <div class="contact-methods">
+                        <div class="contact-method">
+                            <div class="contact-icon">📧</div>
+                            <div class="contact-details">
+                                <h4>Email</h4>
+                                <p class="selectable">joselinekananu@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="contact-method">
+                            <div class="contact-icon">📱</div>
+                            <div class="contact-details">
+                                <h4>Phone</h4>
+                                <p>+254 794 363 376</p>
+                            </div>
+                        </div>
+                        <div class="contact-method">
+                            <div class="contact-icon">📍</div>
+                            <div class="contact-details">
+                                <h4>Location</h4>
+                                <p>Nairobi, Kenya</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div style="display: flex; align-items: center; justify-content: center;">
+                    <img src="PROFILE.jpeg" 
+                         alt="Professional" 
+                         style="border-radius: 20px; max-width: 100%; box-shadow: 0 20px 60px rgba(0,0,0,0.2);">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="social-links">
+                <a href="mailto:joselinekananu@gmail.com" class="social-link" title="Email">📧</a>
+                <a href="tel:+254794363376" class="social-link" title="Phone">📱</a>
+            </div>
+            <p style="color: var(--text-secondary);">
+                © 2025 <span class="selectable">Mpurung'a Joseline Kananu</span>. Analytical Chemist | MSc | Nairobi, Kenya
+            </p>
+            <p style="color: var(--text-secondary); font-size: 0.85rem; margin-top: 0.5rem;">
+                Certifications: Data Protection | Basic Computer Studies
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Disable right-click
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+            return false;
+        });
+
+        // Disable keyboard shortcuts for developer tools
+        document.addEventListener('keydown', function(e) {
+            // F12
+            if (e.keyCode === 123) {
+                e.preventDefault();
+                return false;
+            }
+            // Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+Shift+C, Ctrl+U
+            if (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74 || e.keyCode === 67)) {
+                e.preventDefault();
+                return false;
+            }
+            // Ctrl+U (view source)
+            if (e.ctrlKey && e.keyCode === 85) {
+                e.preventDefault();
+                return false;
+            }
+            // Disable Ctrl+S (save)
+            if (e.ctrlKey && e.keyCode === 83) {
+                e.preventDefault();
+                return false;
+            }
+        });
+
+        // Disable text selection except for elements with 'selectable' class
+        document.addEventListener('selectstart', function(e) {
+            if (!e.target.classList.contains('selectable')) {
+                e.preventDefault();
+                return false;
+            }
+        });
+
+        // Theme Toggle
+        function toggleTheme() {
+            const html = document.documentElement;
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', newTheme);
+            
+            const toggle = document.querySelector('.theme-toggle');
+            toggle.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+            
+            localStorage.setItem('theme', newTheme);
+        }
+
+        // Load saved theme
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            document.querySelector('.theme-toggle').textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.skill-card, .timeline-item, .project-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+
+        // Navbar scroll effect
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 100) {
+                nav.style.padding = '1rem 2rem';
+                nav.style.boxShadow = '0 4px 20px rgba(0,0,0,0.1)';
+            } else {
+                nav.style.padding = '1.5rem 2rem';
+                nav.style.boxShadow = 'none';
+            }
+            
+            lastScroll = currentScroll;
+        });
+
+        // Additional security - disable drag and drop
+        document.addEventListener('dragstart', function(e) {
+            e.preventDefault();
+            return false;
+        });
+
+        // Disable copy
+        document.addEventListener('copy', function(e) {
+            const selection = window.getSelection().toString();
+            const selectableParent = window.getSelection().anchorNode?.parentElement?.closest('.selectable');
+            
+            if (!selectableParent) {
+                e.preventDefault();
+                return false;
+            }
+        });
+    </script>
+</body>
+</html>
