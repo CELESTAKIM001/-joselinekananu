@@ -7,6 +7,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for professional icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         :root {
             --primary: #6366f1;
@@ -132,11 +134,13 @@
             justify-content: center;
             transition: all 0.3s;
             font-size: 1.2rem;
+            color: var(--text-primary);
         }
 
         .theme-toggle:hover {
             transform: rotate(180deg);
             background: var(--primary);
+            color: white;
         }
 
         .hero {
@@ -426,6 +430,7 @@
             justify-content: center;
             font-size: 1.8rem;
             margin-bottom: 1.5rem;
+            color: white;
         }
 
         .skill-card h3 {
@@ -660,6 +665,7 @@
             border: 1px solid var(--border);
             border-radius: 16px;
             transition: all 0.3s;
+            text-decoration: none;
         }
 
         .contact-method:hover {
@@ -675,7 +681,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
+            font-size: 1.3rem;
+            color: white;
         }
 
         .contact-details h4 {
@@ -707,11 +714,12 @@
             justify-content: center;
             gap: 1rem;
             margin-bottom: 2rem;
+            flex-wrap: wrap;
         }
 
         .social-link {
-            width: 45px;
-            height: 45px;
+            width: 50px;
+            height: 50px;
             background: var(--bg-light);
             border: 1px solid var(--border);
             border-radius: 50%;
@@ -721,12 +729,62 @@
             color: var(--text-primary);
             text-decoration: none;
             transition: all 0.3s;
+            font-size: 1.2rem;
         }
 
         .social-link:hover {
-            background: var(--primary);
-            color: white;
             transform: translateY(-3px);
+            box-shadow: 0 5px 15px var(--shadow);
+        }
+
+        .social-link.email:hover {
+            background: #ea4335;
+            color: white;
+            border-color: #ea4335;
+        }
+
+        .social-link.phone:hover {
+            background: #25d366;
+            color: white;
+            border-color: #25d366;
+        }
+
+        .social-link.linkedin:hover {
+            background: #0077b5;
+            color: white;
+            border-color: #0077b5;
+        }
+
+        .social-link.facebook:hover {
+            background: #1877f2;
+            color: white;
+            border-color: #1877f2;
+        }
+
+        .social-link.bebee:hover {
+            background: #00aced;
+            color: white;
+            border-color: #00aced;
+        }
+
+        .developer-credit {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .developer-credit a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .developer-credit a:hover {
+            color: var(--accent);
+            text-decoration: underline;
         }
 
         @keyframes fadeInLeft {
@@ -828,7 +886,9 @@
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
-            <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
+            <button class="theme-toggle" onclick="toggleTheme()">
+                <i class="fas fa-moon"></i>
+            </button>
         </div>
     </nav>
 
@@ -852,9 +912,11 @@
                 </p>
                 <div class="hero-buttons">
                     <a href="#contact" class="btn-primary">
-                        Let's Connect →
+                        <i class="fas fa-paper-plane"></i>
+                        Let's Connect
                     </a>
                     <a href="#projects" class="btn-secondary">
+                        <i class="fas fa-briefcase"></i>
                         View Experience
                     </a>
                 </div>
@@ -904,7 +966,9 @@
         </div>
         <div class="skills-grid">
             <div class="skill-card">
-                <div class="skill-icon">🔬</div>
+                <div class="skill-icon">
+                    <i class="fas fa-vial"></i>
+                </div>
                 <h3>Chromatography</h3>
                 <div class="skill-tags">
                     <span class="tag">HPLC/UPLC</span>
@@ -914,7 +978,9 @@
                 </div>
             </div>
             <div class="skill-card">
-                <div class="skill-icon">📊</div>
+                <div class="skill-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
                 <h3>Spectroscopy</h3>
                 <div class="skill-tags">
                     <span class="tag">UV-Vis</span>
@@ -925,7 +991,9 @@
                 </div>
             </div>
             <div class="skill-card">
-                <div class="skill-icon">⚗️</div>
+                <div class="skill-icon">
+                    <i class="fas fa-flask"></i>
+                </div>
                 <h3>Wet Chemistry</h3>
                 <div class="skill-tags">
                     <span class="tag">Titration</span>
@@ -936,7 +1004,9 @@
                 </div>
             </div>
             <div class="skill-card">
-                <div class="skill-icon">💻</div>
+                <div class="skill-icon">
+                    <i class="fas fa-laptop-code"></i>
+                </div>
                 <h3>Data & Software</h3>
                 <div class="skill-tags">
                     <span class="tag">ChemStation</span>
@@ -946,7 +1016,9 @@
                 </div>
             </div>
             <div class="skill-card">
-                <div class="skill-icon">✅</div>
+                <div class="skill-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
                 <h3>Quality Control</h3>
                 <div class="skill-tags">
                     <span class="tag">Method Validation</span>
@@ -957,7 +1029,9 @@
                 </div>
             </div>
             <div class="skill-card">
-                <div class="skill-icon">🧪</div>
+                <div class="skill-icon">
+                    <i class="fas fa-microscope"></i>
+                </div>
                 <h3>Sample Preparation</h3>
                 <div class="skill-tags">
                     <span class="tag">Extraction</span>
@@ -1152,22 +1226,28 @@
                         to your team with my expertise in chromatography, spectroscopy, and QC systems.
                     </p>
                     <div class="contact-methods">
-                        <div class="contact-method">
-                            <div class="contact-icon">📧</div>
+                        <a href="mailto:joselinekananu@gmail.com" class="contact-method">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
                             <div class="contact-details">
                                 <h4>Email</h4>
                                 <p class="selectable">joselinekananu@gmail.com</p>
                             </div>
-                        </div>
-                        <div class="contact-method">
-                            <div class="contact-icon">📱</div>
+                        </a>
+                        <a href="tel:+254794363376" class="contact-method">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
                             <div class="contact-details">
                                 <h4>Phone</h4>
                                 <p>+254 794 363 376</p>
                             </div>
-                        </div>
+                        </a>
                         <div class="contact-method">
-                            <div class="contact-icon">📍</div>
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
                             <div class="contact-details">
                                 <h4>Location</h4>
                                 <p>Nairobi, Kenya</p>
@@ -1187,8 +1267,21 @@
     <footer>
         <div class="footer-content">
             <div class="social-links">
-                <a href="mailto:joselinekananu@gmail.com" class="social-link" title="Email">📧</a>
-                <a href="tel:+254794363376" class="social-link" title="Phone">📱</a>
+                <a href="mailto:joselinekananu@gmail.com" class="social-link email" title="Email">
+                    <i class="fas fa-envelope"></i>
+                </a>
+                <a href="tel:+254794363376" class="social-link phone" title="Phone">
+                    <i class="fas fa-phone"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/joseline-kananu-341748219/" target="_blank" class="social-link linkedin" title="LinkedIn">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="https://web.facebook.com/joseline.kananu.2025" target="_blank" class="social-link facebook" title="Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://ke.bebee.com/bee/joseline-kananu" target="_blank" class="social-link bebee" title="beBee">
+                    <i class="fas fa-briefcase"></i>
+                </a>
             </div>
             <p style="color: var(--text-secondary);">
                 © 2025 <span class="selectable">Mpurung'a Joseline Kananu</span>. Analytical Chemist | MSc | Nairobi, Kenya
@@ -1196,6 +1289,12 @@
             <p style="color: var(--text-secondary); font-size: 0.85rem; margin-top: 0.5rem;">
                 Certifications: Data Protection | Basic Computer Studies
             </p>
+            <div class="developer-credit">
+                <p>
+                    <i class="fas fa-code"></i> Designed & Developed by 
+                    <a href="https://celestakim.github.io/website/" target="_blank">celestakim_gis</a>
+                </p>
+            </div>
         </div>
     </footer>
 
@@ -1246,7 +1345,8 @@
             html.setAttribute('data-theme', newTheme);
             
             const toggle = document.querySelector('.theme-toggle');
-            toggle.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+            const icon = toggle.querySelector('i');
+            icon.className = newTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
             
             localStorage.setItem('theme', newTheme);
         }
@@ -1255,7 +1355,8 @@
         window.addEventListener('DOMContentLoaded', () => {
             const savedTheme = localStorage.getItem('theme') || 'light';
             document.documentElement.setAttribute('data-theme', savedTheme);
-            document.querySelector('.theme-toggle').textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+            const icon = document.querySelector('.theme-toggle i');
+            icon.className = savedTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
         });
 
         // Smooth scrolling
